@@ -13,14 +13,16 @@ namespace MiJuegoUnoLaSalle2022
         byte green;
         byte blue;
 
+        Texture2D spaceShip;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             //_graphics.IsFullScreen = true;
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 600;
             _graphics.ApplyChanges();
         }
 
@@ -38,6 +40,7 @@ namespace MiJuegoUnoLaSalle2022
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            spaceShip = this.Content.Load<Texture2D>("Spaceship");
         }
 
         protected override void Update(GameTime gameTime)
@@ -48,15 +51,21 @@ namespace MiJuegoUnoLaSalle2022
             // TODO: Add your update logic here
             red++;
             green++;
-            blue++;
+            blue++; // blue = blue + 1
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(new Color(red,green,blue));
+            //GraphicsDevice.Clear(new Color(red,green,blue));
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+
+            _spriteBatch.Draw(spaceShip, new Vector2(300, 250), Color.White);
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

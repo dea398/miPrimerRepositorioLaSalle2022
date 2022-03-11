@@ -7,8 +7,12 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+    <DefineConstants />
   </PropertyGroup>
   <ItemGroup>
     <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
@@ -19,5 +23,9 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Images\" />
+    <Folder Include="Assets\Sounds\" />
   </ItemGroup>
 </Project>
