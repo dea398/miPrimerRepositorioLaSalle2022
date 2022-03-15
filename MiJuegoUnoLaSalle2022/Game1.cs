@@ -27,6 +27,7 @@ namespace MiJuegoUnoLaSalle2022
             _graphics.PreferredBackBufferWidth = 800;
             _graphics.PreferredBackBufferHeight = 600;
             _graphics.ApplyChanges();
+
         }
 
         protected override void Initialize()
@@ -38,6 +39,7 @@ namespace MiJuegoUnoLaSalle2022
 
             positionX = 300;
             positionY = 250;
+
 
             base.Initialize();
         }
