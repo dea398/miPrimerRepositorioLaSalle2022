@@ -1,2 +1,2 @@
 #Introduction
-lorem ipsum .daasdlfajslaernalksfnalsdfkjas
+This project is created for learning purposes related to game development in 2D for new programmers. In this specific point of the game we are learning how to load images (sprites) into the game and use the keyboard.
