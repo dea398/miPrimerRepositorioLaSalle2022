@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace MiJuegoUnoLaSalle2022
 {
@@ -9,14 +11,12 @@ namespace MiJuegoUnoLaSalle2022
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        bool fireballSwitch;
-
         Texture2D spaceShip;
-        Texture2D fireball;
 
-        Rectangle fireballRectangle;
+        List<Fireball> fireballs;
+
         Rectangle spaceShipRectangle;
-
+        
 
         public Game1()
         {
@@ -34,9 +34,10 @@ namespace MiJuegoUnoLaSalle2022
         {
             // TODO: Add your initialization logic here
 
-            fireballSwitch = false;
-            fireballRectangle = new Rectangle(0, 0, 50, 50);
             spaceShipRectangle = new Rectangle(300, 350, 250, 250);
+
+            fireballs = new List<Fireball>();
+            
 
             base.Initialize();
         }
@@ -47,7 +48,6 @@ namespace MiJuegoUnoLaSalle2022
 
             // TODO: use this.Content to load your game content here
             spaceShip = this.Content.Load<Texture2D>("Spaceship");
-            fireball = this.Content.Load<Texture2D>("Fireball");
         }
 
         protected override void Update(GameTime gameTime)
@@ -72,15 +72,11 @@ namespace MiJuegoUnoLaSalle2022
             }
             else if (keysState.IsKeyDown(Keys.Space))
             {
-                fireballSwitch = true;
-                fireballRectangle.X = spaceShipRectangle.X + (spaceShipRectangle.Width/2) - 22;
-                fireballRectangle.Y = spaceShipRectangle.Y + 10;
+                fireballs.Add(new Fireball());
             }
 
-            if (fireballSwitch)
-            {
-                fireballRectangle.Y-=5;
-            }
+            
+
 
             base.Update(gameTime);
         }
@@ -93,10 +89,8 @@ namespace MiJuegoUnoLaSalle2022
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
-            if (fireballSwitch)
-            {  
-                _spriteBatch.Draw(fireball,fireballRectangle, Color.White);
-            }
+           
+
             
             _spriteBatch.Draw(spaceShip, spaceShipRectangle, Color.White);
             
