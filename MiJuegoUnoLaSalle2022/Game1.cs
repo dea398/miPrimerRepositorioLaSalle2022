@@ -16,6 +16,8 @@ namespace MiJuegoUnoLaSalle2022
         List<Fireball> fireballs;
 
         Rectangle spaceShipRectangle;
+
+        
         
 
         public Game1()
@@ -28,6 +30,7 @@ namespace MiJuegoUnoLaSalle2022
             _graphics.PreferredBackBufferHeight = 600;
             _graphics.ApplyChanges();
 
+            
         }
 
         protected override void Initialize()
