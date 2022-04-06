@@ -11,13 +11,8 @@ namespace MiJuegoUnoLaSalle2022
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        Texture2D spaceShip;
-
-        List<Fireball> fireballs;
-
-        Rectangle spaceShipRectangle;
-
-        
+        Player spaceShip;
+        Sprite fireball;
         
 
         public Game1()
@@ -30,17 +25,15 @@ namespace MiJuegoUnoLaSalle2022
             _graphics.PreferredBackBufferHeight = 600;
             _graphics.ApplyChanges();
 
+                      
             
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
-            spaceShipRectangle = new Rectangle(300, 350, 250, 250);
-
-            fireballs = new List<Fireball>();
-            
+            spaceShip = new Player();
+            fireball = new Sprite("Fireball");
 
             base.Initialize();
         }
@@ -50,7 +43,9 @@ namespace MiJuegoUnoLaSalle2022
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            spaceShip = this.Content.Load<Texture2D>("Spaceship");
+
+            spaceShip.LoadContent(this.Content);
+            fireball.LoadContent(this.Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -61,25 +56,15 @@ namespace MiJuegoUnoLaSalle2022
             KeyboardState keysState = Keyboard.GetState();
 
             // TODO: Add your update logic here
-            //red++;
-            //green++;
-            //blue++; // blue = blue + 1
 
             if (keysState.IsKeyDown(Keys.Left))
             {
-                spaceShipRectangle.X -= 3;
+                spaceShip.Move(false);
             }
             else if (keysState.IsKeyDown(Keys.Right))
             {
-                spaceShipRectangle.X += 3;
+                spaceShip.Move(true);
             }
-            else if (keysState.IsKeyDown(Keys.Space))
-            {
-                fireballs.Add(new Fireball());
-            }
-
-            
-
 
             base.Update(gameTime);
         }
@@ -92,10 +77,8 @@ namespace MiJuegoUnoLaSalle2022
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
-           
-
-            
-            _spriteBatch.Draw(spaceShip, spaceShipRectangle, Color.White);
+            spaceShip.Draw(this._spriteBatch, Color.White);
+            fireball.Draw(this._spriteBatch, Color.White);
             
             _spriteBatch.End();
 
