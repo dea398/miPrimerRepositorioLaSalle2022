@@ -14,7 +14,7 @@ namespace MiJuegoUnoLaSalle2022
         
         private string sourceImageName;
 
-        private Texture2D texture2D;
+        protected Texture2D texture2D;
 
         protected Rectangle rectangle;
 
@@ -22,8 +22,14 @@ namespace MiJuegoUnoLaSalle2022
 
         public Point Location
         {
-            get { return location; }
-            set { location = value; }
+            get 
+            { 
+                return location; 
+            }
+            set 
+            { 
+                location = value; 
+            }
         }
 
         private Point size;
@@ -73,7 +79,7 @@ namespace MiJuegoUnoLaSalle2022
             this.sourceImageName = sourceImageName;
             this.location = location;
             this.size = size;
-            this.rectangle = new Rectangle(this.location,this.size);
+            this.rectangle = new Rectangle(this.Location,this.Size);
         }
 
         /// <summary>
@@ -92,7 +98,8 @@ namespace MiJuegoUnoLaSalle2022
         /// <param name="color">Specify in which background color the image will be drawn</param>
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-             spriteBatch.Draw(this.texture2D, this.rectangle, color);   
+            this.rectangle.Location = this.Location;
+            spriteBatch.Draw(this.texture2D, this.rectangle, color);   
         }
     }
 }

@@ -12,7 +12,6 @@ namespace MiJuegoUnoLaSalle2022
         private SpriteBatch _spriteBatch;
 
         Player spaceShip;
-        Sprite fireball;
         
 
         public Game1()
@@ -33,7 +32,7 @@ namespace MiJuegoUnoLaSalle2022
         {
             // TODO: Add your initialization logic here
             spaceShip = new Player();
-            fireball = new Sprite("Fireball");
+          
 
             base.Initialize();
         }
@@ -45,7 +44,7 @@ namespace MiJuegoUnoLaSalle2022
             // TODO: use this.Content to load your game content here
 
             spaceShip.LoadContent(this.Content);
-            fireball.LoadContent(this.Content);
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -53,17 +52,21 @@ namespace MiJuegoUnoLaSalle2022
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            KeyboardState keysState = Keyboard.GetState();
+            KeyboardState myKeyboard = Keyboard.GetState();
 
             // TODO: Add your update logic here
 
-            if (keysState.IsKeyDown(Keys.Left))
+            if (myKeyboard.IsKeyDown(Keys.Left))
             {
                 spaceShip.Move(false);
             }
-            else if (keysState.IsKeyDown(Keys.Right))
+            else if (myKeyboard.IsKeyDown(Keys.Right))
             {
                 spaceShip.Move(true);
+            }
+            else if (myKeyboard.IsKeyDown(Keys.Space))
+            {
+                spaceShip.Shoot(this.Content, spaceShip.Location);
             }
 
             base.Update(gameTime);
@@ -78,7 +81,7 @@ namespace MiJuegoUnoLaSalle2022
             _spriteBatch.Begin();
 
             spaceShip.Draw(this._spriteBatch, Color.White);
-            fireball.Draw(this._spriteBatch, Color.White);
+            
             
             _spriteBatch.End();
 
