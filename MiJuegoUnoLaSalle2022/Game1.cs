@@ -67,6 +67,12 @@ namespace MiJuegoUnoLaSalle2022
             else if (myKeyboard.IsKeyDown(Keys.Space))
             {
                 spaceShip.Shoot(this.Content, spaceShip.Location);
+                        
+            }
+
+            foreach (var item in spaceShip.fireballs)
+            {
+                item.MoveUp();
             }
 
             base.Update(gameTime);
@@ -81,7 +87,11 @@ namespace MiJuegoUnoLaSalle2022
             _spriteBatch.Begin();
 
             spaceShip.Draw(this._spriteBatch, Color.White);
-            
+
+            foreach (var item in spaceShip.fireballs)
+            {
+                item.Draw(this._spriteBatch, Color.White);
+            }
             
             _spriteBatch.End();
 
