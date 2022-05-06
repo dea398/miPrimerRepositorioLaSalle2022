@@ -30,7 +30,7 @@ namespace MiJuegoUnoLaSalle2022
         /// Move the object horizontally
         /// </summary>
         /// <param name="direction">Boolean, True will move the object to the right, False will move the object to the Left</param>
-        public void Move(bool direction, Player enemy)
+        public void Move(bool direction)
         {
             
             if (direction)
@@ -42,13 +42,7 @@ namespace MiJuegoUnoLaSalle2022
                 this.Location = new Point(this.Location.X - 5, this.Location.Y);
             }
 
-            foreach (var item in enemy.fireballs)
-            {
-                if (item.MyRectangle.Intersects(this.rectangle))
-                {
-                    
-                }
-            }
+           
 
         }
     }
