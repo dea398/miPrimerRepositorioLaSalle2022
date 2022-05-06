@@ -18,6 +18,13 @@ namespace MiJuegoUnoLaSalle2022
 
         protected Rectangle rectangle;
 
+        public Rectangle MyRectangle
+        {
+            get { return rectangle; }
+            set { rectangle = value; }
+        }
+
+
         private Point location;
 
         public Point Location
@@ -55,7 +62,7 @@ namespace MiJuegoUnoLaSalle2022
         /// </summary>
         public Sprite():this("NoImage")
         { 
-
+            
         }
 
         /// <summary>
@@ -88,7 +95,28 @@ namespace MiJuegoUnoLaSalle2022
         /// <param name="contentManager">Send the principal content manager of the Game</param>
         public void LoadContent(ContentManager contentManager)
         {
-            this.texture2D = contentManager.Load<Texture2D>(this.sourceImageName);
+            try
+            {
+                this.texture2D = contentManager.Load<Texture2D>(this.sourceImageName);
+            }
+            catch (Exception)
+            {
+                throw new Exception("This is a custom message error");
+            }
+
+            try
+            {
+                //Codigo que intenta conectarse a la base de datos
+            }
+            catch (Exception)
+            {
+                //codigo donde personalizo el error que quiero mostrar según la excepción detectada
+            }
+            finally
+            {
+                // sea que exista un error o no, siempre este bloque debe ejecutarse
+            }
+            
         }
 
         /// <summary>
@@ -96,10 +124,13 @@ namespace MiJuegoUnoLaSalle2022
         /// </summary>
         /// <param name="spriteBatch">Send the principal Spritebatch of the Game</param>
         /// <param name="color">Specify in which background color the image will be drawn</param>
-        public void Draw(SpriteBatch spriteBatch, Color color)
+        public virtual void Draw(SpriteBatch spriteBatch, Color color)
         {
             this.rectangle.Location = this.Location;
-            spriteBatch.Draw(this.texture2D, this.rectangle, color);   
+            spriteBatch.Draw(this.texture2D, this.rectangle, color);
+
         }
+        
     }
+
 }

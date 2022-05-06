@@ -12,6 +12,9 @@ namespace MiJuegoUnoLaSalle2022
     class Player : Sprite
     {
         public List<Fireball> fireballs;
+
+        public int Life { get; set; }
+
         public Player():base("Spaceship",new Point(300,450),new Point(200,200))
         {
             fireballs = new List<Fireball>();
@@ -27,8 +30,9 @@ namespace MiJuegoUnoLaSalle2022
         /// Move the object horizontally
         /// </summary>
         /// <param name="direction">Boolean, True will move the object to the right, False will move the object to the Left</param>
-        public void Move(bool direction)
+        public void Move(bool direction, Player enemy)
         {
+            
             if (direction)
             {
                 this.Location = new Point(this.Location.X + 5 , this.Location.Y);
@@ -37,9 +41,15 @@ namespace MiJuegoUnoLaSalle2022
             {
                 this.Location = new Point(this.Location.X - 5, this.Location.Y);
             }
+
+            foreach (var item in enemy.fireballs)
+            {
+                if (item.MyRectangle.Intersects(this.rectangle))
+                {
+                    
+                }
+            }
+
         }
-
-
-
     }
 }

@@ -12,6 +12,7 @@ namespace MiJuegoUnoLaSalle2022
         private SpriteBatch _spriteBatch;
 
         Player spaceShip;
+        Player spacheShip2;
         
 
         public Game1()
@@ -32,7 +33,7 @@ namespace MiJuegoUnoLaSalle2022
         {
             // TODO: Add your initialization logic here
             spaceShip = new Player();
-          
+            
 
             base.Initialize();
         }
@@ -74,6 +75,8 @@ namespace MiJuegoUnoLaSalle2022
             {
                 item.MoveUp();
             }
+
+           
 
             base.Update(gameTime);
         }
