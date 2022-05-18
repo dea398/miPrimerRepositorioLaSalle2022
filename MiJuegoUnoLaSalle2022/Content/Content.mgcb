@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:Fireball.png
 
+#begin music.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music.mp3
+
 #begin NoImage.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -36,6 +42,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NoImage.png
+
+#begin shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:shoot.wav
 
 #begin Spaceship.png
 /importer:TextureImporter

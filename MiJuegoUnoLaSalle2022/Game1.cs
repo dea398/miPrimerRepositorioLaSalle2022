@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,6 +14,9 @@ namespace MiJuegoUnoLaSalle2022
 
         Player spaceShip;
         Player spacheShip2;
+
+        Song musica;
+        SoundEffect shootEffect;
         
 
         public Game1()
@@ -23,9 +27,7 @@ namespace MiJuegoUnoLaSalle2022
             //_graphics.IsFullScreen = true;
             _graphics.PreferredBackBufferWidth = 800;
             _graphics.PreferredBackBufferHeight = 600;
-            _graphics.ApplyChanges();
-
-                      
+            _graphics.ApplyChanges();                  
             
         }
 
@@ -45,6 +47,8 @@ namespace MiJuegoUnoLaSalle2022
             // TODO: use this.Content to load your game content here
 
             spaceShip.LoadContent(this.Content);
+            musica = this.Content.Load<Song>("music");
+            MediaPlayer.Play(musica);
             
         }
 
